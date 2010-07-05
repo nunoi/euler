@@ -1,0 +1,260 @@
+@media print {
+   body {
+      background-color:#ffffff;
+      width:500px;
+   }
+   .noprint {
+      display:none;
+   }
+}
+
+@media screen {
+   .print {
+      display:none;
+   }
+   body {
+      width: 760px;
+   }
+
+}
+
+body {
+   margin: 20px;
+   padding: 0;
+   border-width: 0;
+   font: normal 90% verdana, helvetica, sans-serif;
+}
+
+#top {
+   background:#c1daf9 url(images/top_gradient.gif) repeat-x;
+}
+#bottom {
+   width:800px;
+   text-align:center;
+   padding:20px;
+   font:11px Verdana,sans-serif;
+}
+
+#content {
+   border-top:solid 2px #eeeeee;
+   border-bottom:solid 2px #aaaaaa;
+   border-left:solid 2px #eeeeee;
+   border-right:solid 2px #aaaaaa;
+   padding:10px;
+   background-color:#fafafa;
+}
+
+
+.title {
+      font-family:verdana,arial;
+      text-decoration:none;
+      font-weight:bold;
+      font-size:15pt;
+      color: #676c9c;
+}
+.subtitle {
+      font-family:courier new,arial;
+      font-size:11pt;
+      font-weight:bold;
+}
+.info {
+      font-weight: normal;
+      font-size:85%;
+}
+
+#menu_bar {
+   padding: 0;
+   font-size: 60%;
+}
+
+#menu_bar ul {
+   list-style: none;
+   margin:0;
+   padding:0;
+   text-align:center;
+}
+
+#menu_bar li {
+   display: inline;
+   margin-right: 10px;
+   padding:5px;
+}
+
+#menu_bar #current a {
+
+}
+
+.pagination {
+padding: 2px;
+}
+
+.pagination ul {
+margin: 0;
+padding: 0;
+text-align:left; /*Set to "right" to right align pagination interface*/
+font-size: 12px;
+font-weight:bold;
+font-family:courier new,monospace;
+}
+
+.pagination li {
+list-style-type: none;
+display: inline;
+vertical-align:bottom;
+}
+
+.pagination a, .pagination a:visited, .pagination a:link {
+padding: 2px 6px;
+border: 1px solid #d7e5fb;
+text-decoration: none;
+color: #fff;
+background-color: #676c9c;
+}
+
+.pagination a:hover, .pagination a:active {
+border: 1px solid #d7e5fb;
+color: #777;
+background-color: #d7dafb;
+}
+
+.pagination .currentpage {
+font-weight: bold;
+padding: 2px 6px;
+border: 1px solid #d7e5fb;
+background-color:#000000;
+color: #ffffff;
+}
+
+.pagination li.disablepage {
+padding: 0 5px;
+border: 1px solid #929292;
+color: #929292;
+}
+
+.pagination li.nextpage {
+font-weight: bold;
+}
+
+* html .pagination li.currentpage, * html .pagination li.disablepage { /*IE 6 and below. Adjust non linked LIs slightly to account for bugs*/
+margin-right: 5px;
+padding-right: 0;
+}
+
+a {
+   text-decoration: none;
+}
+
+a:link {
+   color: #676c9c;
+}
+a:visited {
+   color: #676c9c;
+}
+a:hover {
+   color: #676c9c;
+   text-decoration: underline;
+}
+
+var {
+  font-family: times new roman;
+  font-style: italic;
+  font-size: 120%;
+}
+
+dfn {
+   border-bottom: 1px dotted green;
+   font-style: normal;
+}
+
+/* Rounded corner boxes */
+* html span.corners-top, * html span.corners-bottom { background-image: url("images/corners_left.gif"); }
+* html span.corners-top span, * html span.corners-bottom span { background-image: url("images/corners_right.gif"); }
+
+.box {
+	padding: 0 10px;
+	margin-bottom: 4px;
+	background-repeat: no-repeat;
+	background-position: 100% 0;
+}
+
+span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
+	font-size: 1px;
+	line-height: 1px;
+	display: block;
+	height: 5px;
+	background-repeat: no-repeat;
+}
+
+span.corners-top {
+	background-image: none;
+	background-position: 0 0;
+	margin: 0 -5px;
+}
+
+span.corners-top span {
+	background-image: none;
+	background-position: 100% 0;
+}
+
+span.corners-bottom {
+	background-image: none;
+	background-position: 0 100%;
+	margin: 0 -5px;
+	clear: both;
+}
+
+span.corners-bottom span {
+	background-image: none;
+	background-position: 100% 100%;
+}
+
+.box span.corners-top, .box span.corners-bottom {
+	margin: 0 -10px;
+}
+span.corners-top {
+	background-image: url("images/corners_left.png");
+}
+
+span.corners-top span {
+	background-image: url("images/corners_right.png");
+}
+
+span.corners-bottom {
+	background-image: url("images/corners_left.png");
+}
+
+span.corners-bottom span {
+	background-image: url("images/corners_right.png");
+}
+
+.bg_top {
+   background-color: #d7e5fb;
+}
+
+.bg_table {
+   background-color: #d7dafb;
+}
+
+.bg_table th {
+   color:#888;
+   text-align:left;
+   font-size: 90%;
+}
+
+.bg_table_row1 {
+   background-color: #fff;
+   height:30px;
+}
+
+.bg_table_row2 {
+   background-color: #edf4fe;
+   height:30px;
+}
+
+.bg_info {
+   background-color: #ecedf2;
+}
+
+.bg_info2 {
+   background-color: #edf4fe;
+}
