@@ -1,32 +1,14 @@
-class Node():
-
-    def __init__(self, data):
-        self.left = None
-        self.right = None
-        self.parent = None
-        self.data = data
-
-    def insert(self, d, l, r, p):
-        self.data = d
-        self.left = l
-        self.right = r
-        self.parent = p
- 
-    def isRoot(self):
-        if self.parent == None:
-            return true
-        return false
-
 class Tree():
 
-    def __init__(self):
-        self.nodes = []
+    def __init__(self, data, left=None, right=None):
+        self.data = data
+        self.left = left
+        self.right = right
 
     def fromList(self, nodeList):
         for subList in nodeList:
             for n in subList:
-                node = Node(n)
-                self.nodes.append(node)
+                node = Tree(n)
 
     def getRoot(self):
         if self.isRoot():
