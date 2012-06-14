@@ -1,28 +1,26 @@
 #!/usr/bin/python
 
-from tree import Tree
+import graph
 
 FILE = "p018_tree.txt"
 
-def readTree():
-    nodes = []
+def readGraph():
     f = open(FILE)
+    parents = []
+    g = graph.graph()
     for line in f:
-        numbers = line.split(" ")
-        tmp = []
-        for n in numbers:
-            tmp.append(int(n))
-        nodes.append(tmp)
-    return nodes
+        children = line.split(" ")
+        if parents != []:
+            for p in parents:
+                node = (int(p), [int(children[parents.index(p)]), \
+                                 int(children[parents.index(p) + 1])])
+                g.addNode(node)
+        parents = children
+    return g
+
+g = readGraph()
+#g.printGraph()
+print g.getRootNode()
 
 
-treeList = readTree()
-#print treeList
-tree = Tree()
-tree.fromList(treeList)
-tree.printTree()
-#root = graph.Node(tree[1])
-#for i in range(0, len(tree[1:]), 2):
-#    root.insert(i, i + 1)
-#root.print_tree()
 
