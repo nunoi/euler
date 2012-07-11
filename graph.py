@@ -1,35 +1,63 @@
-class graph():
-    nodes = {}
 
-    def addNode(self, node):
-        value, children = node
-        self.nodes[value] = children
+class Vertex():
+    data = None
 
-    def removeNode(self, node):
-        pass
+    def __init__(self, data = None):
+        self.data = data
+
+class Graph():
+    vertices = []
+    edges = []
+    directed = False
+
+    def __init__(self, directed = False):
+        self.directed = directed
+
+    def addVertex(self, data = None):
+        v = Vertex(data)
+        self.vertices.append(v)
+
+    def removeVertex(self, v):
+        self.vertices.remove(v)
+
+    def addEdge(self, edge):
+        a, b = edge
+        self.edges.append((a, b))
+        if not self.directed:
+            self.edges.append((b, a))
+
+    def getEdges(self, v = None):
+        if v != None:
+            return self.getEdgesForVertex(v)
+        else:
+            return self.getAllEdges()
+
+    def removeEdge(self, edge):
+        a, b = edge
+        self.edges.remove((a, b))
+        if not directed:
+            self.edges.remove((b, a))
+
+    def getAllEdges(self):
+        return self.edges
+
+    def getEdgesForVertex(self, v):
+        edgeList = []
+        for e in self.edges:
+            a, b = e
+            if a == v or b == v:
+                edgeList.append(e)
+        return edgeList
 
     def printGraph(self):
-        for value in self.nodes:
-            print str(value) + ", " + str(self.nodes[value])
+        for vertex in self.vertices:
+            s = ""
+            if vertex.data != None:
+                s = str(vertex.data) + " : "
+            s = s + str(vertex)
+            print s
 
-    def getRootNode(self):
-        res = None
-        all = []
-        allchildren = []
-        for v in self.nodes:
-            c = self.nodes[v]
-            all.append(v)
-            c1, c2 = c
-            if c1 not in allchildren:
-                allchildren.append(c1)
-            if c2 not in allchildren:
-                allchildren.append(c2)
-        print len(all)
-        print len(allchildren)
-        for v in all:
-            if v not in allchildren:
-                print "not in: " + str(v)
-                res = v
-        return res
+    def printEdges(self):
+        print(str(self.edges))
 
 
