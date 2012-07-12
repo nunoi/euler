@@ -30,21 +30,23 @@ def readFile():
         vertices.append(tmp)
     return vertices
 
+def getChildrenIndexes(i, k):
+    res = ((i + 1) * (i + 2)/2) + k - 1
+    return (res, res + 1)
+
 def makeGraph(vertices):
     f = open(FILE)
     g = Graph(True)
     for i in range(len(vertices)):
         for k in range(len(vertices[i])):
             g.addVertex(vertices[i][k])
-    print (len(g.vertices))
     for i in range(len(vertices) - 1):
-        for k in range(len(vertices[i])):
-            print str(i) + "   " + str(k)
-            g.addEdge((g.vertices[(i*(i+1)/2) + k-1],
-                g.vertices[((i+1)*(i+2)/2) + k-1]))
-            print ((i+1)*(i+2)/2) + k + 1
-            g.addEdge((g.vertices[(i*(i+1)/2) + k-1],
-                g.vertices[((i+1)*(i+2)/2) + k-1 + 1]))
+        for k in range(len(vertices[i+1])):
+            print str(i) + " " + str(k) + " : " + str((i+1)*(i+2)/2 + k - 1) + " " + str((i)
+            #            a, b = getChildrenIndexes(i, k)
+            #            g.addEdge((g.vertices[(i*(i+1)/2) + k], g.vertices[a]))
+            #            g.addEdge((g.vertices[(i*(i+1)/2) + k], g.vertices[b]))
+            #            print str(g.vertices[(i*(i+1)/2)+k].data) + " " + str(g.vertices[a].data) + " " + str(g.vertices[b].data)
     return g
 
 def getMaxSum(g):
@@ -56,10 +58,14 @@ def getMaxSum(g):
 vertices = readFile()
 g = makeGraph(vertices)
 
-v = g.vertices[3]
-for e in g.getEdges(v):
-    a, b = e
-    print str(a.data) + "   " + str(b.data)
+#print str(g.vertices[17].data)
+#print str(g.vertices[109].data)
+#print str(g.vertices[119].data)
+#print str(g.vertices[17]==g.vertices[109])
+#v = g.vertices[119]
+#for e in g.getEdges(v):
+#    a, b = e
+#    print str(a.data) + "   " + str(b.data)
 
 #g.printGraph()
 #g.printEdges()
