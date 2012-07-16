@@ -30,8 +30,17 @@ def readFile():
         vertices.append(tmp)
     return vertices
 
+def getParentIndex(i, k):
+    # add 1 to both args to account for arrays starting at zero
+    #i = i + 1
+    #k = k + 1
+
+    res = ((i) * (i + 1)/2) + k
+    return res
+
 def getChildrenIndexes(i, k):
-    res = ((i + 1) * (i + 2)/2) + k - 1
+    #res = ((i + 1) * (i + 2)/2) + k - 1
+    res = getParentIndex(i, k) + i + 1
     return (res, res + 1)
 
 def makeGraph(vertices):
@@ -41,18 +50,41 @@ def makeGraph(vertices):
         for k in range(len(vertices[i])):
             g.addVertex(vertices[i][k])
     for i in range(len(vertices) - 1):
-        for k in range(len(vertices[i+1])):
-            print str(i) + " " + str(k) + " : " + str((i+1)*(i+2)/2 + k - 1) + " " + str((i)
-            #            a, b = getChildrenIndexes(i, k)
-            #            g.addEdge((g.vertices[(i*(i+1)/2) + k], g.vertices[a]))
-            #            g.addEdge((g.vertices[(i*(i+1)/2) + k], g.vertices[b]))
-            #            print str(g.vertices[(i*(i+1)/2)+k].data) + " " + str(g.vertices[a].data) + " " + str(g.vertices[b].data)
+        for k in range(len(vertices[i])):
+            #print str(i) + " " + str(k) + " : " + str(getParentIndex(i, k)) + " " + str(getChildrenIndexes(i, k))
+            p = getParentIndex(i, k)
+            a, b = getChildrenIndexes(i, k)
+            g.addEdge((g.vertices[p], g.vertices[a]))
+            g.addEdge((g.vertices[p], g.vertices[b]))
     return g
 
+def getChildren(v):
+    children = []
+    for e in g.getEdges(v):
+        a, b = e
+        if b != v:
+            children.append(b)
+    return children
+
 def getMaxSum(g):
+    a = None
+    b = None
     sum = 0
-    v = g.vertices[0]
-    sum = v.data
+    used_vertices = []
+    vertex = g.vertices[0]
+    sum = vertex.data
+    while (getChildren(vertex) != []):
+        used_vertices.append(vertex)
+        max_v = None
+        for v in getChildren(vertex):
+            if v != None:
+                if max_v == None:
+                    max_v = v
+                if v.data >= max_v.data:
+                    max_v = v
+        vertex = max_v
+        print str(vertex.data) + " : " + str(sum)
+        sum = sum + vertex.data
     return sum
 
 vertices = readFile()
@@ -69,7 +101,7 @@ g = makeGraph(vertices)
 
 #g.printGraph()
 #g.printEdges()
-#print getMaxSum(g)
+print getMaxSum(g)
 
 
 # Test graph class
