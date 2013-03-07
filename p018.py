@@ -87,6 +87,14 @@ def getMaxSum(g):
         sum = sum + vertex.data
     return sum
 
+def getEndVertices(g):
+    res = []
+    vertex = g.vertices[0]
+    for v in g.vertices:
+        if getChildren(v) == []:
+            res.append(v)
+    return res
+
 vertices = readFile()
 g = makeGraph(vertices)
 
@@ -102,6 +110,8 @@ g = makeGraph(vertices)
 #g.printGraph()
 #g.printEdges()
 print getMaxSum(g)
+for v in  getEndVertices(g):
+    print str(v.data)
 
 
 # Test graph class
