@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 			sum += i;
 		}
 	}
-	printf("A soma dos numeros naturais menores que 1000 é %d\n", sum);
+	printf("The sum of multiples of 3 or 5 below 1000 is %d\n", sum);
 	return (0);
 }
 

@@ -1,3 +1,7 @@
+/*
+ * This program finds the prime factors of a number.
+ * The problem is to find the largest prime factor.
+ */
 
 #include <stdio.h>
 #include <math.h>

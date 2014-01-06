@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 		if (fib % 2 == 0)
 			sum += fib;
 	}
-	printf("A soma dos nºs Fibonacci pares menores que 1.000.000 é %d\n",
+	printf("The sum of Fibonacci even numbers less than 1.000.000 is %d\n",
 		sum);
 	return 0;
 }
