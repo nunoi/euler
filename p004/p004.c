@@ -13,8 +13,7 @@
 
 int is_palindrome(int n)
 {
-    int i, j;
-    int nlen;
+    int i, nlen;
     int palindrome = 1;
     char s[32];
     char s1[16], s2[16];
@@ -43,12 +42,12 @@ int main(int argc, char *argv[])
     
     for (i = MAX_NUMBER; i > 0; i--) {
         for (j = MAX_NUMBER; j > 0; j--) {
-            //printf("%d x %d\n", i, j);
+            /* printf("%d x %d\n", i, j); */
             if (is_palindrome(i * j)) {
                 if (i * j > largest) {
                     largest = i * j;
                 }
-                //printf("Found palindrome %d. Largest yet is %d\n", i * j, largest);
+                /* printf("Found palindrome %d. Largest yet is %d\n", i * j, largest); */
             }
         }
     }
@@ -57,6 +56,6 @@ int main(int argc, char *argv[])
     }*/
     printf("Largest palindrome of multiplication of " \
            "two 3-digit numbers is %d\n", largest);
-    return(0);
+    return 0;
 }
 

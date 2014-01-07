@@ -1,2 +1,3 @@
 Main p003 : p003.c ;
 
+ObjectCcFlags p003 : -Wall -pedantic -std=c99 ;

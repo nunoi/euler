@@ -1,2 +1,3 @@
 Main p005 : p005.c ;
 
+ObjectCcFlags p005 : -Wall -pedantic ;

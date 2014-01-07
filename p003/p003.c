@@ -26,7 +26,7 @@ void prime_factors(unsigned long long n)
         /* While i divides n, print i and divide n */
         while (n % i == 0)
         {
-            printf("%d ", i);
+            printf("%llu ", i);
             n = n / i;
         }
     }
@@ -34,13 +34,13 @@ void prime_factors(unsigned long long n)
     /* This condition is to handle the case whien n is a prime number
      * greater than 2 */
     if (n > 2)
-        printf ("%d\n", n);
+        printf ("%llu\n", n);
 }
 
 int main(int argc, char *argv[])
 {
     unsigned long long number = 600851475143ULL;
     prime_factors(number);
-    return(0);
+    return 0;
 }
 

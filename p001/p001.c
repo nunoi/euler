@@ -12,6 +12,6 @@ int main(int argc, char *argv[])
 		}
 	}
 	printf("The sum of multiples of 3 or 5 below 1000 is %d\n", sum);
-	return (0);
+	return 0;
 }
 

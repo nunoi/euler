@@ -9,7 +9,6 @@
 /* checks if n is divisible by all numbers from 1 to 20 */
 int is_divisible(int n) 
 {
-    int res = 0;
     int i;
 
     for (i = 2; i <= 20; i++) {
@@ -29,8 +28,9 @@ int main(int argc, char *argv[])
         i++;
         if (is_divisible(i)) {
             printf("Smallest number divisible by [1..20] is %d\n", i);
-            return(0);
+            return 0;
         }
    }
+   return 1;
 }
 

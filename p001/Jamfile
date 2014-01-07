@@ -1,2 +1,3 @@
 Main p001 : p001.c ;
 
+ObjectCcFlags p001 : -Wall -pedantic ;
