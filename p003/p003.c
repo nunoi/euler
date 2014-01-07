@@ -31,7 +31,7 @@ void prime_factors(unsigned long long n)
         }
     }
  
-    /* This condition is to handle the case whien n is a prime number
+    /* This condition is to handle the case when n is a prime number
      * greater than 2 */
     if (n > 2)
         printf ("%llu\n", n);
