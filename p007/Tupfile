@@ -1,0 +1,8 @@
+include Tuprules.tup
+
+CFLAGS += -I../include
+
+: foreach *.c |> gcc $(CFLAGS) -c %f -o %o |> %B.o
+: *.o |> gcc %f -o %o |> p007
+
+

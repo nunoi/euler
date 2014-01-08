@@ -1,6 +1,0 @@
-
-HDRS += ../include ;
-
-Main p007 : p007.c ../util/mathutil.c ;
-
-ObjectCcFlags p007 : -Wall -pedantic ;

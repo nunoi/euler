@@ -1,0 +1,3 @@
+: foreach *.c |> gcc -Wall -pedantic -c %f -o %o |> %B.o
+
+
