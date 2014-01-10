@@ -1,3 +1,4 @@
 Main p008 : p008.c ;
 
 ObjectCcFlags p008 : -Wall -pedantic ;
+LINKLIBS = -lm ;

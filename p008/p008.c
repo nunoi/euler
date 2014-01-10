@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 /* 
  * read text files into char array 
@@ -45,55 +46,61 @@ char *get_substr(char *a, int pos, int len)
     return s;
 }
 
-int generate_products(int *p)
+int get_digit(int number, int pos)
 {
-    int size = 0;
-
-    return size;
+    number /= pow(10, pos);
+    return number % 10;
 }
 
-int find_greatest_product(int *p, size_t size, char *a)
+int get_product(int number)
 {
-    int len, res, i, j;
+    int i;
+    int prod;
 
+    prod = 1;
+    for (i = 0; i < 5; i++) {
+        int p;
+        p = get_digit(number, i);
+        prod = prod * p;
+    }
+    /*printf("digits %d - product %d\n", number, prod);*/
+    return prod;
+}
+
+int find_greatest_product(char *a)
+{
+    int len, res, i;
+    int digits, prod;
+
+    digits = 5;
     res = 0;
     len = strlen(a);
-    for (i = 0; i < size; i++) {
-        /* 59049 is largest product, so 5+1 is enough to hold number 
-         * and null character */
-        char prod[6];
-        int l;
-
-        l = sprintf(prod, "%d", p[i]);
-        for (j = 0; j < len - l; j++) {
-            char *substr;
-
-            substr = get_substr(a, j, l);
-            printf("prod: %s - substr: %s\n", prod, substr);
-            if (strncmp(prod, substr, l) == 0) {
-                if (res < p[i]) {
-                    res = p[i];
-                }
-            }
-            free(substr);
+    for (i = 0; i < len - digits; i++) {
+        char *substr;
+ 
+        substr = get_substr(a, i, digits);
+        prod = get_product(atoi(substr));
+        /* printf("prod: %s - substr: %s\n", prod, substr); */
+        if (res < prod) {
+            res = prod;
         }
-    }
+        free(substr);
+   }
     return res;
 }
 
 int main(int argc, char *argv[])
 {
     char *a;
-    int *table, size, res;
+    int res;
 
     a = NULL;
-    table = NULL;
-    size = 0;
     res = 0;
 
     a = read_file("p008_number.txt");
-    size = generate_products(table);
-    res = find_greatest_product(table, size, a);
+    res = find_greatest_product(a);
+
+    free(a);
 
     printf("Greatest product is %d\n", res);
 
