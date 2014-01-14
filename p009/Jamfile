@@ -1,3 +1,6 @@
-Main p009 : p009.c ;
+
+HDRS += ../include ;
+
+Main p009 : p009.c ../util/list.c ;
 
 ObjectCcFlags p009 : -Wall -pedantic ;
