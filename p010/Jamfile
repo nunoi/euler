@@ -1,0 +1,6 @@
+
+HDRS += ../include ;
+
+Main p010 : p010.c ../util/mathutil.c ;
+
+ObjectCcFlags p010 : -Wall -pedantic -std=c99 ;
