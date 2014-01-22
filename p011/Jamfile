@@ -1,0 +1,6 @@
+
+HDRS += ../include ;
+
+Main p011 : p011.c ;
+
+ObjectCcFlags p011 : -Wall -pedantic ;
