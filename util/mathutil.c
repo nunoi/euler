@@ -29,3 +29,21 @@ unsigned int *prime_generator()
     return table;
 }
 
+unsigned int *triangle_number_generator()
+{
+    int i, stop;
+    unsigned int *table, tn;
+
+    stop = 0;
+    i = 0;
+    tn = 0;
+    table = (unsigned int *) malloc(sizeof(unsigned int) * TRIANGLE_LIMIT);
+    while(i < TRIANGLE_LIMIT) {
+        tn = tn + i;
+        table[i] = tn;
+        printf("%d\n", tn);
+        i++;
+    }
+    return table;
+}
+

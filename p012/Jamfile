@@ -1,0 +1,5 @@
+HDRS += ../include ;
+
+Main p012 : p012.c ../util/mathutil.c ;
+
+ObjectCcFlags p012 : -Wall -pedantic ;
