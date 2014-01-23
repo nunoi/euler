@@ -1,5 +1,5 @@
 HDRS += ../include ;
 
-Main p012 : p012.c ../util/mathutil.c ;
+Main p012 : p012.c ../util/mathutil.c ../util/list.c ;
 
-ObjectCcFlags p012 : -Wall -pedantic ;
+ObjectCcFlags p012 : -Wall -pedantic -std=c99 ;
