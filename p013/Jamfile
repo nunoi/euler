@@ -1,0 +1,5 @@
+HDRS += ../include ;
+
+Main p013 : p013.c ../util/bigint.c ;
+
+ObjectCcFlags p013 : -Wall -pedantic -std=c99 ;

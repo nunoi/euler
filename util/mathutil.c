@@ -69,7 +69,7 @@ unsigned int *prime_generator()
     unsigned int i, j;
     unsigned int *table;
 
-    table = malloc(PRIME_LIMIT * sizeof(unsigned int));
+    table = (unsigned int *) malloc(PRIME_LIMIT * sizeof(unsigned int));
 
     table[0] = 0;
     table[1] = 0;
