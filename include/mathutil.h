@@ -8,7 +8,7 @@
 
 typedef struct prime_factor_t {
     unsigned long long prime;
-    unsigned long long count;
+    int count;
 } prime_factor_t;
 
 unsigned int *prime_generator();

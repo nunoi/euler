@@ -6,6 +6,7 @@
 #include "list.h"
 #include "mathutil.h"
 
+/* creates a prime factor type defined in mathutil.h for use in list */
 prime_factor_t *create_prime_factor(unsigned long long p)
 {
     prime_factor_t *pf;
@@ -17,7 +18,8 @@ prime_factor_t *create_prime_factor(unsigned long long p)
 }
 
 /* A function to get all prime factors of a given number n from
- * http://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/ */
+ * http://www.geeksforgeeks.org/print-all-prime-factors-of-a-given-number/ 
+ * Returns them as a double linked list of prime_factor_t */
 list_t *get_prime_factors(unsigned long long n)
 {
     list_t *l;
@@ -28,11 +30,12 @@ list_t *get_prime_factors(unsigned long long n)
     p = create_prime_factor(2);
     while (n % 2 == 0)
     {
-        /* printf("%d ", 2); */
         n = n / 2;
         p->count++;
     }
-    list_add(l, p);
+    if (p->count > 0) {
+        list_add(l, p);
+    }
 
     unsigned long long i;
     /* n must be odd at this point. 
@@ -41,11 +44,12 @@ list_t *get_prime_factors(unsigned long long n)
         /* While i divides n, print i and divide n */
         p = create_prime_factor(i);
         while (n % i == 0) {
-            /* printf ("%llu\n", i); */
             p->count++;
             n = n / i;
         }
-        list_add(l, p);
+        if (p->count > 0) {
+            list_add(l, p);
+        }
     }
  
     /* This condition is to handle the case when n is a prime number
@@ -53,8 +57,9 @@ list_t *get_prime_factors(unsigned long long n)
     if (n > 2) {
         p = create_prime_factor(n);
         p->count = 1;
-        /* printf ("%llu\n", n); */
-        list_add(l, p);
+        if (p->count > 0) {
+            list_add(l, p);
+        }
     }
     return l;
 }
