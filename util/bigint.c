@@ -42,15 +42,14 @@ void bi_add(bi_t *res, bi_t *bi1, bi_t *bi2)
     carry = 0;
     i = 0;
     biggest = bi1->size > bi2->size ? bi1->size : bi2->size;
-    res = bi_init(bi1->base);
     res->size = biggest + 1;
     num = (uint8_t *) malloc(sizeof(uint8_t) * (biggest + 1));
-    while(i <= biggest) {
-        p1 = i >= bi1->size ? 0 : bi1->bi[i];
-        p2 = i >= bi2->size ? 0 : bi2->bi[i];
+    while(i <= biggest + 1) {
+        p1 = i > bi1->size ? 0 : bi1->bi[i];
+        p2 = i > bi2->size ? 0 : bi2->bi[i];
         tmp = p1 + p2 + carry;
         if (tmp >= res->base) {
-            tmp = tmp % res->base;
+            tmp = tmp - res->base;
             carry = 1;
         } else {
             carry = 0;
@@ -62,7 +61,19 @@ void bi_add(bi_t *res, bi_t *bi1, bi_t *bi2)
 */
         i++;
     }
-    res->bi = num;
+    if (num[i] == 0) {
+        uint8_t *trunc_num;
+
+        printf("truncated. was %d and is now 1 less\n", res->size);
+        res->size--;
+        trunc_num = (uint8_t *) malloc(sizeof(uint8_t) * res->size);
+        for(i = 0; i < res->size; i++) {
+            trunc_num[i] = num[i];
+        }
+        res->bi = trunc_num;
+    } else {
+        res->bi = num;
+    }
 }
 
 void bi_print(bi_t *bi)
