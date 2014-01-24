@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
             printf("Triangle number %llu has %d factors\n", tn[i], nfactors);
             return 0;
         }
-        /* for debugging initially */
+        /* for debugging initially stop after arbitrary low number */
 /*        if (tn[i] > 72) {
             return 0;
         } */
