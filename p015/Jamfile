@@ -1,0 +1,5 @@
+HDRS += ../include ;
+
+Main p015 : p015.c ../util/mathutil.c ../util/list.c ;
+
+ObjectCcFlags p015 : -Wall -pedantic -std=c99 ;

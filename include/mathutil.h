@@ -6,14 +6,20 @@
 #define PRIME_LIMIT 2000000
 #define TRIANGLE_LIMIT 2000000
 
+#include "list.h"
+
 typedef struct prime_factor_t {
     unsigned long long prime;
     int count;
 } prime_factor_t;
 
 unsigned int *prime_generator();
+
 unsigned long long *triangle_number_generator();
+
 list_t *get_prime_factors(unsigned long long n);
+
+unsigned long long combination(unsigned int n, unsigned int k);
 
 #endif
 

@@ -107,3 +107,29 @@ unsigned long long *triangle_number_generator()
     return table;
 }
 
+unsigned long long factorial(unsigned int n)
+{
+    unsigned long long r;
+
+    r = 1;
+    while (n > 1) {
+        r *= n--;
+    }
+    return r;
+}
+
+unsigned long long combination(unsigned int n, unsigned int k)
+{
+    unsigned long long fn, fk, fnk;
+
+    fn = factorial(n);
+    printf("%llu\n", fn);
+    fk = factorial(k);
+    printf("%llu\n", fk);
+    fnk = factorial(n - k);
+    printf("%llu\n", fnk);
+    printf("::: %d\n", (fn/fk) / fnk);
+    return (fn / (fk * fnk));
+}
+
+
