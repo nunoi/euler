@@ -9,9 +9,10 @@ bi_t *bi_init(int base)
 {
     bi_t *bi;
 
-    bi = (bi_t *) malloc(sizeof(bi_t) + 1);
+    bi = (bi_t *) malloc(sizeof(bi_t));
     bi->base = base;
     bi->size = 0;
+    bi->bi = NULL;
     return bi;
 }
 
@@ -42,11 +43,11 @@ void bi_add(bi_t *res, bi_t *bi1, bi_t *bi2)
     carry = 0;
     i = 0;
     biggest = bi1->size > bi2->size ? bi1->size : bi2->size;
-    res->size = biggest + 1;
-    num = (uint8_t *) malloc(sizeof(uint8_t) * (biggest + 1));
-    while(i <= biggest + 1) {
-        p1 = i > bi1->size ? 0 : bi1->bi[i];
-        p2 = i > bi2->size ? 0 : bi2->bi[i];
+    res->size = biggest;
+    num = (uint8_t *) malloc(sizeof(uint8_t) * (res->size));
+    while(i < res->size) {
+        p1 = i >= bi1->size ? 0 : bi1->bi[i];
+        p2 = i >= bi2->size ? 0 : bi2->bi[i];
         tmp = p1 + p2 + carry;
         if (tmp >= res->base) {
             tmp = tmp - res->base;
@@ -55,22 +56,23 @@ void bi_add(bi_t *res, bi_t *bi1, bi_t *bi2)
             carry = 0;
         }
         num[i] = tmp;
+        i++;
 /*
-        printf("bi1: %d bi2: %d carry: %d\n", bi1->bi[i], bi2->bi[i], carry);
+        printf("p1: %d p2: %d carry: %d\n", p1, p2, carry);
         printf("num[%d]: %d\n", i, num[i]);
 */
-        i++;
     }
-    if (num[i] == 0) {
-        uint8_t *trunc_num;
+    if (carry == 1) {
+        uint8_t *extra_num;
 
-        printf("truncated. was %d and is now 1 less\n", res->size);
-        res->size--;
-        trunc_num = (uint8_t *) malloc(sizeof(uint8_t) * res->size);
+        extra_num = (uint8_t *) malloc(sizeof(uint8_t) * res->size + 1);
         for(i = 0; i < res->size; i++) {
-            trunc_num[i] = num[i];
+            extra_num[i] = num[i];
         }
-        res->bi = trunc_num;
+        extra_num[i] = carry;
+        res->bi = extra_num;
+        res->size++;
+        free(num);
     } else {
         res->bi = num;
     }
@@ -89,4 +91,9 @@ void bi_print(bi_t *bi)
     printf("\n");
 }
 
+void bi_clear(bi_t *bi)
+{
+    free(bi->bi);
+    bi->bi = NULL;
+}
 

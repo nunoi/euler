@@ -18,5 +18,6 @@ bi_t *bi_init(int base);
 void bi_set(bi_t *bi, char *str);
 void bi_add(bi_t *res, bi_t *bi1, bi_t *bi2);
 void bi_print(bi_t *bi);
+void bi_clear(bi_t *bi);
 
 #endif // BIGINT_H
